@@ -1,0 +1,12 @@
+Production memory   Working memory
+data: l - library, f - framework, p - problem, pd - processing data, pr - process
+facts: ""
+Rules:
+R8 - if pr = "Serialization" and "Deserialization" or pr = NULL then l = "jackson"
+R7 - if pr = "Deserialization" then l = "JSON-lib"
+R6 - if pr = "Serialization" then l = "jackson"
+R5 - if pr = "Serialization" and "Deserialization" or pr = NULL then l = "google-gson"
+R4 - if pr = "Deserialization" then l = "Google-gson"
+R3 - if pr = "Serialization" then l = "Flexjson"
+R2 - if p = "JSON parser" and pd = "Big data" then R6
+R1 - if p = "JSON parser" and pd = "Small data" then R3 or R4 or R5

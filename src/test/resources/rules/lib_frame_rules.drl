@@ -1,0 +1,19 @@
+package com.javacodegeeks.drools;
+import com.javacodegeeks.drools.JsonParserTask;
+
+
+rule "Json parser for small data rule"
+when $problem : Problem(definition == 'JSON parser' && dataType == DataType.SMALL_DATA)
+then
+    System.out.println("\nJson parser for small data rule");
+    System.out.println("************************************");
+    $problem.setLibrary("google-gson");
+end
+
+rule "Json parser for big data rule"
+when $problem : Problem(definition == 'JSON parser' && dataType == DataType.BIG_DATA)
+then
+    System.out.println("\nJson parser for big data rule");
+    System.out.println("************************************");
+    $problem.setLibrary("jackson");
+end

@@ -1,0 +1,8 @@
+Library Small Big Size Total
+Flexjson 8 6 9 7.67     
+google-gson 10 7 6 7.67
+Genson 9 8 5 7.33
+json-io 5 5 10 6.67
+jackson 7 10 4 7
+JSONiJ 6 4 7 5.67
+JSON-lib 4 9 3 5.33
