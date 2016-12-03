@@ -1,0 +1,89 @@
+import com.javacodegeeks.drools.tasks.WebFrameworkTask;
+import com.javacodegeeks.drools.enums.Features;
+import com.javacodegeeks.drools.frameworks.Framework;
+import com.javacodegeeks.drools.comparator.FrameworkSorter;
+import java.util.List
+import com.javacodegeeks.drools.frameworks.Framework;
+
+global List<Framework> webFrameworkList;
+
+rule "Overall features rule"
+no-loop
+when webFrameworkTask: WebFrameworkTask(featurePriority == Features.NONE)
+then
+      FrameworkSorter.sortByOverallFeatures(webFrameworkList);
+      webFrameworkTask.setFramework((Framework) webFrameworkList.get(0));
+      System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+end
+
+rule "Rapid application development feature rule"
+no-loop
+when webFrameworkTask: WebFrameworkTask(featurePriority == Features.RAPID_APPLICATION_DEVELOPMENT)
+then
+      FrameworkSorter.sortByRapidAppDevFeature(webFrameworkList);
+      webFrameworkTask.setFramework((Framework) webFrameworkList.get(0));
+      System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+end
+
+rule "Complexity feature rule"
+no-loop
+when webFrameworkTask: WebFrameworkTask(featurePriority == Features.COMPLEXITY)
+then
+    FrameworkSorter.sortByComplexityFeature(webFrameworkList);
+    webFrameworkTask.setFramework((Framework) webFrameworkList.get(0));
+    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+ end
+
+rule "Ease of use feature rule"
+no-loop
+when webFrameworkTask: WebFrameworkTask(featurePriority == Features.EASE_OF_USE)
+then
+    FrameworkSorter.sortByEaseOfUseFeature(webFrameworkList);
+    webFrameworkTask.setFramework((Framework) webFrameworkList.get(0));
+    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+ end
+
+rule "Documentation and community feature rule"
+no-loop
+when webFrameworkTask: WebFrameworkTask(featurePriority == Features.DOCUMENTATION_COMMUNITY)
+then
+    FrameworkSorter.sortByDocAndCommunityFeature(webFrameworkList);
+    webFrameworkTask.setFramework((Framework) webFrameworkList.get(0));
+    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+end
+
+rule "Ecosystem feature rule"
+no-loop
+when webFrameworkTask: WebFrameworkTask(featurePriority == Features.ECOSYSTEM)
+then
+    FrameworkSorter.sortByEcosystemFeature(webFrameworkList);
+    webFrameworkTask.setFramework((Framework) webFrameworkList.get(0));
+    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+end
+
+rule "Scalability feature rule"
+no-loop
+when webFrameworkTask: WebFrameworkTask(featurePriority == Features.SCALABILITY)
+then
+    FrameworkSorter.sortByScalabilityFeature(webFrameworkList);
+    webFrameworkTask.setFramework((Framework) webFrameworkList.get(0));
+    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+end
+
+rule "Code feature rule"
+no-loop
+when webFrameworkTask: WebFrameworkTask(featurePriority == Features.CODE)
+then
+    FrameworkSorter.sortByCodeFeature(webFrameworkList);
+    webFrameworkTask.setFramework((Framework) webFrameworkList.get(0));
+    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+end
+
+rule "Look and Feel feature rule"
+no-loop
+when webFrameworkTask: WebFrameworkTask(featurePriority == Features.LOOK_FEEL)
+then
+    FrameworkSorter.sortByLookAndFeelFeature(webFrameworkList);
+    webFrameworkTask.setFramework((Framework) webFrameworkList.get(0));
+    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+end

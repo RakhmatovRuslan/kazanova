@@ -1,7 +1,7 @@
 package com.javacodegeeks.drools;
 
-import com.javacodegeeks.drools.Enums.DataType;
-import com.javacodegeeks.drools.Enums.Features;
+import com.javacodegeeks.drools.enums.DataType;
+import com.javacodegeeks.drools.enums.Features;
 
 import java.util.Scanner;
 

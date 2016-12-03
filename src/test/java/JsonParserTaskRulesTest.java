@@ -1,6 +1,6 @@
 import com.javacodegeeks.drools.*;
-import com.javacodegeeks.drools.Libraries.Library;
-import com.javacodegeeks.drools.Tasks.JsonParserTask;
+import com.javacodegeeks.drools.libraries.Library;
+import com.javacodegeeks.drools.tasks.JsonParserTask;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

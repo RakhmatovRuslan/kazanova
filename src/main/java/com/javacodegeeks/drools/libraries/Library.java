@@ -1,4 +1,4 @@
-package com.javacodegeeks.drools.Libraries;
+package com.javacodegeeks.drools.libraries;
 
 /**
  * Created by Ruslan on 11/29/2016.

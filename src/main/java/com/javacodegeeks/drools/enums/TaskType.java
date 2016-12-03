@@ -1,4 +1,4 @@
-package com.javacodegeeks.drools.Enums;
+package com.javacodegeeks.drools.enums;
 
 /**
  * Created by Ruslan on 12/1/2016.

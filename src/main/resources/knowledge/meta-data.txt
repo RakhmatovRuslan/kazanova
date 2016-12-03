@@ -1,0 +1,6 @@
+Web Application Framework types:
+Request Based 0
+Component Based 1
+Hybrid 2
+Meta 3
+RIA-based 4
