@@ -3,7 +3,10 @@ package com.javacodegeeks.drools;
 import com.javacodegeeks.drools.Libraries.JsonParserLibrary;
 import com.javacodegeeks.drools.Libraries.Library;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,6 +18,7 @@ import java.util.stream.Stream;
 public class LibrariesRepository {
 
     final static String jsonParserLibFileName = "jsonlib.txt";
+    final static String webFrameworkFileName = "webFramework.txt";
 
     private List<Library> jsonParserLibraries;
 
@@ -30,7 +34,7 @@ public class LibrariesRepository {
     }
 
     private void getJsonParserFromFile(){
-        File file = new File(LibrariesRepository.class.getClassLoader().getResource("rules/"+jsonParserLibFileName).getFile());
+        File file = new File(LibrariesRepository.class.getClassLoader().getResource("knowledge/"+jsonParserLibFileName).getFile());
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             Stream<String> fileContentStream =  bufferedReader.lines();
@@ -40,12 +44,34 @@ public class LibrariesRepository {
             lines.remove(0);
             lines.forEach(line-> {
                 String [] tokens = line.split(" ");
-                jsonParserLibraries.add(new JsonParserLibrary(tokens[0],Double.valueOf(tokens[3]),0.0,Double.valueOf(tokens[4]),Double.valueOf(tokens[1]),Double.valueOf(tokens[2])));
+                jsonParserLibraries.add(new JsonParserLibrary(tokens[0],
+                        Double.valueOf(tokens[3]),0.0,
+                        Double.valueOf(tokens[4]),
+                        Double.valueOf(tokens[1]),
+                        Double.valueOf(tokens[2])));
             });
             jsonParserLibraries.stream().forEach(lib-> System.out.println(lib.toString()));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void getWebFrameworks(){
+        File file = new File(LibrariesRepository.class.getClassLoader().getResource("knowledge/"+webFrameworkFileName).getFile());
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            List<String> lines = new ArrayList<>();
+            lines = bufferedReader.lines().collect(Collectors.toList());
+            lines.remove(0);
+            lines.forEach(line->{
+                String [] tokens = line.split(" ");
+
+            });
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return;
     }
 
 
