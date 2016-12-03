@@ -1,10 +1,10 @@
 package com.javacodegeeks.drools;
-import com.javacodegeeks.drools.Comparator.LibrarySorter;
-import com.javacodegeeks.drools.Enums.Features;
+import com.javacodegeeks.drools.comparator.LibrarySorter;
+import com.javacodegeeks.drools.enums.Features;
 import java.util.Scanner;
-import com.javacodegeeks.drools.Libraries.Library;
-import com.javacodegeeks.drools.Tasks.JsonParserTask;
-import com.javacodegeeks.drools.Enums.DataType;
+import com.javacodegeeks.drools.libraries.Library;
+import com.javacodegeeks.drools.tasks.JsonParserTask;
+import com.javacodegeeks.drools.enums.DataType;
 
 
 global java.util.List<Library> jsonParserLibraries;
@@ -14,7 +14,7 @@ no-loop
 when jsonParser : JsonParserTask( featurePriority == Features.NONE)
 then
     LibrarySorter.sortByPerformanceDesc(jsonParserLibraries);
-    jsonParser.setLibrary(((Library)jsonParserLibraries.get(0)).getName());
+    jsonParser.setLibrary((Library)jsonParserLibraries.get(0));
     update(jsonParser);
     System.out.println("Library for the jsonParser is - "+ jsonParser.getLibrary());
 end
@@ -24,7 +24,7 @@ no-loop
 when jsonParser : JsonParserTask( featurePriority == Features.SIZE)
 then
     LibrarySorter.sortBySizeDesc(jsonParserLibraries);
-    jsonParser.setLibrary(((Library) jsonParserLibraries.get(0)).getName());
+    jsonParser.setLibrary((Library) jsonParserLibraries.get(0));
     update(jsonParser);
     System.out.println("Library for the jsonParser is - "+ jsonParser.getLibrary());
 end
@@ -35,7 +35,7 @@ no-loop
 when jsonParser : JsonParserTask( featurePriority == Features.PERFORMANCE && dataType == DataType.BIG_DATA)
 then
     LibrarySorter.sortByJsonBigDataPerDesc(jsonParserLibraries);
-    jsonParser.setLibrary(((Library) jsonParserLibraries.get(0)).getName());
+    jsonParser.setLibrary((Library)jsonParserLibraries.get(0));
     update(jsonParser);
     System.out.println("Library for the jsonParser is - "+ jsonParser.getLibrary());
 end
@@ -45,7 +45,7 @@ no-loop
 when jsonParser : JsonParserTask( featurePriority == Features.PERFORMANCE && dataType == DataType.SMALL_DATA)
 then
     LibrarySorter.sortByJsonSmallDataPerDesc(jsonParserLibraries);
-    jsonParser.setLibrary(((Library) jsonParserLibraries.get(0)).getName());
+    jsonParser.setLibrary((Library)jsonParserLibraries.get(0));
     update(jsonParser);
     System.out.println("Library for the jsonParser is - "+ jsonParser.getLibrary());
 end

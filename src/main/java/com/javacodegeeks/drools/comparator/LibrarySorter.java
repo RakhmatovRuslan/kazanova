@@ -1,7 +1,7 @@
-package com.javacodegeeks.drools.Comparator;
+package com.javacodegeeks.drools.comparator;
 
-import com.javacodegeeks.drools.Libraries.JsonParserLibrary;
-import com.javacodegeeks.drools.Libraries.Library;
+import com.javacodegeeks.drools.libraries.JsonParserLibrary;
+import com.javacodegeeks.drools.libraries.Library;
 
 import java.util.List;
 
@@ -34,4 +34,5 @@ public class LibrarySorter {
     public static void sortByJsonSmallDataPerDesc(List<JsonParserLibrary> sortingList){
         sortingList.sort((JsonParserLibrary l1,JsonParserLibrary l2)->l2.getSmallDataPerformance().intValue()-l1.getSmallDataPerformance().intValue());
     }
+
 }

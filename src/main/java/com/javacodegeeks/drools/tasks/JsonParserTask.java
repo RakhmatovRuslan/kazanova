@@ -1,9 +1,9 @@
-package com.javacodegeeks.drools.Tasks;
+package com.javacodegeeks.drools.tasks;
 
 import com.javacodegeeks.drools.Condition;
-import com.javacodegeeks.drools.Enums.DataProcess;
-import com.javacodegeeks.drools.Enums.DataType;
-import com.javacodegeeks.drools.Enums.Features;
+import com.javacodegeeks.drools.enums.DataProcess;
+import com.javacodegeeks.drools.enums.DataType;
+import com.javacodegeeks.drools.enums.Features;
 
 /**
  * Created by Ruslan on 11/29/2016.
@@ -11,7 +11,6 @@ import com.javacodegeeks.drools.Enums.Features;
 public class JsonParserTask extends Task {
     private DataType dataType;
     private DataProcess dataProcess;
-    private Features featurePriority;
 
     public JsonParserTask() {
         this.featurePriority = Features.NONE;
@@ -31,22 +30,6 @@ public class JsonParserTask extends Task {
     public JsonParserTask(String definition, Features featurePriority) {
         this.definition = definition;
         this.featurePriority = featurePriority;
-    }
-
-    public String getFramework() {
-        return framework;
-    }
-
-    public void setFramework(String framework) {
-        this.framework = framework;
-    }
-
-    public String getLibrary() {
-        return library;
-    }
-
-    public void setLibrary(String library) {
-        this.library = library;
     }
 
     public String getDefinition() {
@@ -73,13 +56,6 @@ public class JsonParserTask extends Task {
         this.dataProcess = dataProcess;
     }
 
-    public Features getFeaturePriority() {
-        return featurePriority;
-    }
-
-    public void setFeaturePriority(Features featurePriority) {
-        this.featurePriority = featurePriority;
-    }
 
     public void askForConditions(){
         this.featurePriority = Condition.inputJsonParserFeatureCondition();

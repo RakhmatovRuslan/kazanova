@@ -1,8 +1,8 @@
 package com.javacodegeeks.drools;
 
-import com.javacodegeeks.drools.Enums.TaskType;
-import com.javacodegeeks.drools.Tasks.JsonParserTask;
-import com.javacodegeeks.drools.Tasks.Task;
+import com.javacodegeeks.drools.enums.TaskType;
+import com.javacodegeeks.drools.tasks.JsonParserTask;
+import com.javacodegeeks.drools.tasks.Task;
 
 /**
  * Created by Ruslan on 12/1/2016.

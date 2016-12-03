@@ -2,9 +2,8 @@ package com.javacodegeeks.drools;
 
 import com.aliasi.spell.EditDistance;
 import com.aliasi.util.Distance;
-import com.javacodegeeks.drools.Enums.TaskType;
-import com.javacodegeeks.drools.Tasks.JsonParserTask;
-import com.javacodegeeks.drools.Tasks.Task;
+import com.javacodegeeks.drools.enums.TaskType;
+import com.javacodegeeks.drools.tasks.Task;
 
 import java.util.HashMap;
 import java.util.Map;
