@@ -14,12 +14,14 @@ import java.util.Map;
 public class ProblemAnalyzer {
     static final Distance<CharSequence> distance
             = new EditDistance(true);
-    static final String [] jsonLibClassifiers = {"json", "parser"};
+    static final String [] jsonLibDictionary = {"json", "parser"};
+    static final String [] webFrameWorkDictionary = {"web-framework", "web"};
     private Map<TaskType,String []> classifiers = null;
 
     public ProblemAnalyzer() {
         classifiers = new HashMap<>();
-        classifiers.put(TaskType.JSON_PARSER,jsonLibClassifiers);
+        classifiers.put(TaskType.JSON_PARSER, jsonLibDictionary);
+        classifiers.put(TaskType.WEB_FRAMEWORK, webFrameWorkDictionary);
     }
 
     public  Task analyzerProblemDefinition(String problemDefinition){
