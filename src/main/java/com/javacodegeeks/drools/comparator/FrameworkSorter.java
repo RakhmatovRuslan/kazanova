@@ -1,7 +1,10 @@
 package com.javacodegeeks.drools.comparator;
 
+import com.javacodegeeks.drools.enums.WebApplicationType;
 import com.javacodegeeks.drools.frameworks.Framework;
+import com.javacodegeeks.drools.frameworks.WebFramework;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,5 +46,14 @@ public class FrameworkSorter {
 
     public static void sortByLookAndFeelFeature(List<Framework> webFrameworkList){
         webFrameworkList.sort((Framework f1, Framework f2)->f2.getLookAndFeel().intValue()-f1.getLookAndFeel().intValue());
+    }
+
+    public static List<Framework> getWebFrameworksByType(List<Framework> webFrameworkList, WebApplicationType webApplicationType){
+        List<Framework> webFrameworks = new ArrayList<>();
+        webFrameworkList.forEach(webFramework->{
+            if(((WebFramework)webFramework).getWebApplicationType() == webApplicationType)
+                webFrameworks.add(webFramework);
+        });
+        return webFrameworks;
     }
 }

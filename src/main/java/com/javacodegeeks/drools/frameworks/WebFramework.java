@@ -12,4 +12,12 @@ public class WebFramework extends Framework {
         super(name, rapidAppDevelopment, complexity, easeOfUse, documentationAndCom, ecosystem, scalability, code, lookAndFeel, total);
         this.webApplicationType = webApplicationType;
     }
+
+    public WebApplicationType getWebApplicationType() {
+        return webApplicationType;
+    }
+
+    public void setWebApplicationType(WebApplicationType webApplicationType) {
+        this.webApplicationType = webApplicationType;
+    }
 }
