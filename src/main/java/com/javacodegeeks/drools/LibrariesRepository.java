@@ -1,6 +1,8 @@
 package com.javacodegeeks.drools;
 
-import com.javacodegeeks.drools.libraries.Framework;
+import com.javacodegeeks.drools.enums.WebApplicationType;
+import com.javacodegeeks.drools.frameworks.Framework;
+import com.javacodegeeks.drools.frameworks.WebFramework;
 import com.javacodegeeks.drools.libraries.JsonParserLibrary;
 import com.javacodegeeks.drools.libraries.Library;
 
@@ -35,41 +37,41 @@ public class LibrariesRepository {
         getWebFrameworksFromFile();
     }
 
-    private void getJsonParserFromFile(){
-        File file = new File(LibrariesRepository.class.getClassLoader().getResource("knowledge/"+jsonParserLibFileName).getFile());
+    private void getJsonParserFromFile() {
+        File file = new File(LibrariesRepository.class.getClassLoader().getResource("knowledge/" + jsonParserLibFileName).getFile());
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            Stream<String> fileContentStream =  bufferedReader.lines();
-            jsonParserLibraries = new ArrayList<Library>();
-            List<String> lines = new ArrayList<>();
-            lines = fileContentStream.collect(Collectors.toList());
+            Stream<String> fileContentStream = bufferedReader.lines();
+            jsonParserLibraries = new ArrayList<>();
+            List<String> lines = fileContentStream.collect(Collectors.toList());
             lines.remove(0);
-            lines.forEach(line-> {
-                String [] tokens = line.split(" ");
+            lines.forEach(line -> {
+                String[] tokens = line.split(" ");
                 jsonParserLibraries.add(new JsonParserLibrary(tokens[0],
-                        Double.valueOf(tokens[3]),0.0,
+                        Double.valueOf(tokens[3]), 0.0,
                         Double.valueOf(tokens[4]),
                         Double.valueOf(tokens[1]),
                         Double.valueOf(tokens[2])));
             });
-            jsonParserLibraries.stream().forEach(lib-> System.out.println(lib.toString()));
+            System.out.println("============================================================");
+            jsonParserLibraries.stream().forEach(lib -> System.out.println(lib.toString()));
+            System.out.println("============================================================");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private void getWebFrameworksFromFile(){
-        File file = new File(LibrariesRepository.class.getClassLoader().getResource("knowledge/"+webFrameworkFileName).getFile());
+    private void getWebFrameworksFromFile() {
+        File file = new File(LibrariesRepository.class.getClassLoader().getResource("knowledge/" + webFrameworkFileName).getFile());
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            List<String> lines = new ArrayList<>();
-            lines = bufferedReader.lines().collect(Collectors.toList());
+            List<String> lines = bufferedReader.lines().collect(Collectors.toList());
             lines.remove(0);
             webFrameworks = new ArrayList<>();
-            lines.forEach(line->{
-                String [] tokens = line.split(" ");
+            lines.forEach(line -> {
+                String[] tokens = line.split(" ");
                 webFrameworks.add(
-                        new Framework(tokens[0],Double.valueOf(tokens[1]),
+                        new WebFramework(tokens[0], Double.valueOf(tokens[1]),
                                 Double.valueOf(tokens[2]),
                                 Double.valueOf(tokens[3]),
                                 Double.valueOf(tokens[4]),
@@ -77,10 +79,12 @@ public class LibrariesRepository {
                                 Double.valueOf(tokens[6]),
                                 Double.valueOf(tokens[7]),
                                 Double.valueOf(tokens[8]),
-                                Double.valueOf(tokens[9]))
+                                Double.valueOf(tokens[9]),
+                                WebApplicationType.values()[Integer.valueOf(tokens[10])])
                 );
             });
             webFrameworks.forEach(framework -> System.out.println(framework));
+            System.out.println("============================================================");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

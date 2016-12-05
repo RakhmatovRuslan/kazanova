@@ -1,9 +1,9 @@
-Frameworks Rapid_app_dev Complexity Ease_of_use Doc&Community Ecosystem Throughput/Scalability Code UX/Look_and_Feel Total Popularity
-Spring-MVC 2.5 3.5 3 4 4 4 3 2 26
-Grails 5 3 4.5 5 4.5 4 4.5 4 34.5
-Vaadin 4.5 4 4.5 5 3 4.5 4 5 34.5
-GWT 4 4 4 4.5 3 4.5 4 5 33
-Wicket 3.5 2.5 3.5 3 3 3 4.5 3.5 26.5
-Play 5 2 3.5 4 4.5 5 4 3 31
-Struts 2 4 3 2.5 3 3 3 2.5 23
-JSF 3 3.5 4 4.5 4 4 4 4.5 31.5
+Frameworks Rapid_app_dev Complexity Ease_of_use Doc&Community Ecosystem Throughput/Scalability Code UX/Look_and_Feel Total Type
+Spring-MVC 2.5 3.5 3 4 4 4 3 2 26 3
+Grails 5 3 4.5 5 4.5 4 4.5 4 34.5 0
+Vaadin 4.5 4 4.5 5 3 4.5 4 5 34.5 4
+GWT 4 4 4 4.5 3 4.5 4 5 33 4
+Wicket 3.5 2.5 3.5 3 3 3 4.5 3.5 26.5 1
+Play 5 2 3.5 4 4.5 5 4 3 31 2
+Struts 2 4 3 2.5 3 3 3 2.5 23 0
+JSF 3 3.5 4 4.5 4 4 4 4.5 31.5 1

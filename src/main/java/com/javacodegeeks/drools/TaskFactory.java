@@ -3,6 +3,7 @@ package com.javacodegeeks.drools;
 import com.javacodegeeks.drools.enums.TaskType;
 import com.javacodegeeks.drools.tasks.JsonParserTask;
 import com.javacodegeeks.drools.tasks.Task;
+import com.javacodegeeks.drools.tasks.WebFrameworkTask;
 
 /**
  * Created by Ruslan on 12/1/2016.
@@ -22,9 +23,13 @@ public class TaskFactory {
             return null;
         }
         if(taskType == TaskType.JSON_PARSER){
-            return new JsonParserTask("This library is used for json serialization/deserialization parsing task");
+            Task task = new JsonParserTask();
+            task.setTaskType(taskType);
+            return task;
         }else if (taskType == TaskType.WEB_FRAMEWORK){
-            return new Task();
+            Task task = new WebFrameworkTask();
+            task.setTaskType(taskType);
+            return task;
         }
         return null;
     }

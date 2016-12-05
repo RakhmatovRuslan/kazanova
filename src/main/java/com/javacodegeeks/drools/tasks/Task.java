@@ -1,7 +1,8 @@
 package com.javacodegeeks.drools.tasks;
 
 import com.javacodegeeks.drools.enums.Features;
-import com.javacodegeeks.drools.libraries.Framework;
+import com.javacodegeeks.drools.enums.TaskType;
+import com.javacodegeeks.drools.frameworks.Framework;
 import com.javacodegeeks.drools.libraries.Library;
 
 /**
@@ -13,6 +14,7 @@ public class Task {
     protected String definition;
     protected Features featurePriority;
     protected String reason;
+    protected TaskType taskType;
 
 
     public Task() {
@@ -56,6 +58,14 @@ public class Task {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public TaskType getTaskType() {
+        return taskType;
+    }
+
+    public void setTaskType(TaskType taskType) {
+        this.taskType = taskType;
     }
 
     @Override
