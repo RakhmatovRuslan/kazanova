@@ -65,6 +65,7 @@ public class LibrariesRepository {
             List<String> lines = new ArrayList<>();
             lines = bufferedReader.lines().collect(Collectors.toList());
             lines.remove(0);
+            webFrameworks = new ArrayList<>();
             lines.forEach(line->{
                 String [] tokens = line.split(" ");
                 webFrameworks.add(
@@ -78,13 +79,20 @@ public class LibrariesRepository {
                                 Double.valueOf(tokens[8]),
                                 Double.valueOf(tokens[9]))
                 );
-            webFrameworks.forEach(framework -> System.out.println(framework));
             });
+            webFrameworks.forEach(framework -> System.out.println(framework));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
+    public List<Framework> getWebFrameworks() {
+        return webFrameworks;
+    }
+
+    public void setWebFrameworks(List<Framework> webFrameworks) {
+        this.webFrameworks = webFrameworks;
+    }
 
     public List<Library> getJsonParserLibraries() {
         return jsonParserLibraries;
