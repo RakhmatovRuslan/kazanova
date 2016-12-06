@@ -1,0 +1,37 @@
+import com.javacodegeeks.drools.Question;
+import com.javacodegeeks.drools.Questionnaire;
+import com.javacodegeeks.drools.enums.TaskType;
+import com.javacodegeeks.drools.enums.Features;
+import com.javacodegeeks.drools.enums.DataType;
+import com.javacodegeeks.drools.tasks.Task;
+import com.javacodegeeks.drools.tasks.JsonParserTask;
+
+global Questionnaire questionnaire;
+global Task task;
+
+rule "JsonParser, the answer to first question is performance rule"
+when question : Question(questionnaire.getTaskType() == TaskType.JSON_PARSER && questionnaire.getQuestions().get(0).getDefinition() == definition && Features.values()[question.getAnswer()] == Features.PERFORMANCE)
+then
+    JsonParserTask jsonParserTask = (JsonParserTask) task;
+    jsonParserTask.setFeaturePriority(Features.values()[question.getAnswer()]);
+    question.setDefinition(questionnaire.getQuestions().get(1).getDefinition());
+    question.setVariations(questionnaire.getQuestions().get(1).getVariations());
+    question.setAny(true);
+ end
+
+rule "JsonParser, the answer to second question is size rule"
+when question : Question(questionnaire.getTaskType() == TaskType.JSON_PARSER && questionnaire.getQuestions().get(0).getDefinition() == definition && Features.values()[question.getAnswer()] != Features.PERFORMANCE)
+then
+    JsonParserTask jsonParserTask = (JsonParserTask) task;
+    jsonParserTask.setFeaturePriority(Features.values()[question.getAnswer()]);
+    question.setAny(false);
+ end
+
+rule "JsonParser, the answer to second question is small data rule"
+when question : Question(questionnaire.getTaskType() == TaskType.JSON_PARSER && questionnaire.getQuestions().get(1).getDefinition() == definition)
+then
+    System.out.println("Hello");
+    JsonParserTask jsonParserTask = (JsonParserTask) task;
+    jsonParserTask.setDataType(DataType.values()[question.getAnswer()]);
+    question.setAny(false);
+ end

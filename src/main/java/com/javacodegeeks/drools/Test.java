@@ -6,6 +6,7 @@ import com.javacodegeeks.drools.tasks.Task;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.rule.FactHandle;
 
 import java.util.List;
 import java.util.Scanner;
@@ -39,15 +40,38 @@ public class Test {
         System.out.println(task.getDefinition());
 
         // ask user to input additional data
-        jsonParserTask.askForConditions();
-
+//        jsonParserTask.askForConditions();
+        Questionnaire questionnaire = new Questionnaire(task.getTaskType());
+        Question question = new Question(questionnaire.getQuestions().get(0).getDefinition(), questionnaire.getQuestions().get(0).getVariations());
+        question.setAny(true);
+        kSession.setGlobal("questionnaire", questionnaire);
+        kSession.setGlobal("task",task);
+        FactHandle factQuestionInsert = null;
+        boolean isInserted = false;
+        while (question.hasAny()){
+            System.out.println(question.getDefinition());
+            System.out.println(question.getVariations());
+            question.setAnswer(scanner.nextInt());
+            if(!isInserted){
+                factQuestionInsert = kSession.insert(question);
+                kSession.fireAllRules();
+                isInserted = true;
+            }else {
+                kSession.update(factQuestionInsert,question);
+                kSession.fireAllRules();
+            }
+        }
+//        task = (Task) kSession.getGlobal("task");
         // insert expression into working memory
         kSession.setGlobal("jsonParserLibraries", jsonParserLibraries);
-        kSession.insert(jsonParserTask);
+        kSession.insert(task);
 
         //firing all rules
         kSession.fireAllRules();
 
-        System.out.println(jsonParserTask);
+        System.out.println(task);
+
+
+
     }
 }
