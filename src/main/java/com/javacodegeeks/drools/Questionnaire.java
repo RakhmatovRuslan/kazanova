@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * Created by Ruslan on 12/7/2016.
  */
 public class Questionnaire {
-    static final String fileName="questioner.txt";
+    static final String fileName="questionnaire.txt";
     private TaskType taskType;
     private List<String> taskProperties;
     private List<Question> questions;
