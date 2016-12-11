@@ -1,0 +1,22 @@
+//JSON-parsing, Web-application framework, Data-accessing-framwork, GUI-application framework
+//=======================================================
+//Correlation between tasks
+//Task - T, Suggestion - S
+//An example:
+// IF T = Web-application THEN S = Application-server and S = Data-access-framwork
+// IF T = GUI-application THEN S = Data-access-framework
+import com.javacodegeeks.drools.tasks.WebFrameworkTask
+import com.javacodegeeks.drools.tasks.Task;
+import java.util.List
+import com.javacodegeeks.drools.tasks.DataAccessTask
+import com.javacodegeeks.drools.tasks.ApplicationServerTask
+import java.util.ArrayList
+
+global List<Task> correlatedTasks;
+
+rule "Web-framework correlation rules"
+when webFrameworkTask : WebFrameworkTask(findCorrelation == true)
+then
+ correlatedTasks.add(new DataAccessTask());
+ correlatedTasks.add(new ApplicationServerTask());
+end

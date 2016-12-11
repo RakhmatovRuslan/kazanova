@@ -1,0 +1,4 @@
+
+rule "Application server task rule"
+when taskjioji : ApplicationServerTask()
+then  end
