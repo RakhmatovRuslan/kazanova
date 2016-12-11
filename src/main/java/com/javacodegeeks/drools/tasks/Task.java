@@ -15,6 +15,7 @@ public class Task {
     protected Features featurePriority;
     protected String reason;
     protected TaskType taskType;
+    protected boolean findCorrelation;
 
 
     public Task() {
@@ -58,6 +59,14 @@ public class Task {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public boolean isFindCorrelation() {
+        return findCorrelation;
+    }
+
+    public void setFindCorrelation(boolean findCorrelation) {
+        this.findCorrelation = findCorrelation;
     }
 
     public TaskType getTaskType() {
