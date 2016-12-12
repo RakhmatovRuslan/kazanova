@@ -37,8 +37,7 @@ public class Test {
         System.out.println(problemDefinition);
         ProblemAnalyzer problemAnalyzer = new ProblemAnalyzer();
         Task task = problemAnalyzer.analyzerProblemDefinition(problemDefinition);
-        System.out.println(task.getDefinition());
-
+        System.out.println(task.getTaskType());
         // ask user to input additional data
 //        jsonParserTask.askForConditions();
         Questionnaire questionnaire = new Questionnaire(task.getTaskType());
@@ -68,10 +67,6 @@ public class Test {
 
         //firing all rules
         kSession.fireAllRules();
-
-        System.out.println(task);
-
-
 
     }
 }

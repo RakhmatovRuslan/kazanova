@@ -14,8 +14,8 @@ import java.util.Map;
 public class ProblemAnalyzer {
     static final Distance<CharSequence> distance
             = new EditDistance(true);
-    static final String [] jsonLibDictionary = {"json", "parser"};
-    static final String [] webFrameWorkDictionary = {"web-framework", "web"};
+    static final String [] jsonLibDictionary = {"json", "java"};
+    static final String [] webFrameWorkDictionary = {"java", "web"};
     private Map<TaskType,String []> classifiers = null;
 
     public ProblemAnalyzer() {
@@ -27,16 +27,19 @@ public class ProblemAnalyzer {
     public  Task analyzerProblemDefinition(String problemDefinition){
         String [] words = problemDefinition.split(" ");
         for(Map.Entry<TaskType,String[]> entry : classifiers.entrySet()){
+            int counter=0;
             TaskType classifierName = entry.getKey();
             String [] classifier = entry.getValue();
             for (String keyWord : classifier) {
                 for (String word : words) {
                     double disValue = distance.distance(keyWord, word);
                     if (disValue == 0.0 || disValue == 1) {
-                        return TaskFactory.getInstance().getTask(classifierName);
+                        counter++;
                     }
                 }
             }
+            if(counter == classifier.length)
+            return TaskFactory.getInstance().getTask(classifierName);
         }
         return new Task();
     }

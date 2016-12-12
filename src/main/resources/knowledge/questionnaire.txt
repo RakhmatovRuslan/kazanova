@@ -1,2 +1,2 @@
-0 featurePriority:What is important for your application?:0 1 2
-0 dataType:What type of data are you processing?:0 1 2
+0 featurePriority:What is important for your application?:None Performance Size
+0 dataType:What type of data are you processing?:None Small-data Big-data

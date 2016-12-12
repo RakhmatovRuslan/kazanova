@@ -30,7 +30,6 @@ then
 rule "JsonParser, the answer to second question is small data rule"
 when question : Question(questionnaire.getTaskType() == TaskType.JSON_PARSER && questionnaire.getQuestions().get(1).getDefinition() == definition)
 then
-    System.out.println("Hello");
     JsonParserTask jsonParserTask = (JsonParserTask) task;
     jsonParserTask.setDataType(DataType.values()[question.getAnswer()]);
     question.setAny(false);
