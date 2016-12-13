@@ -3,6 +3,7 @@ package com.javacodegeeks.drools.gui;
 import com.javacodegeeks.drools.LibrariesRepository;
 import com.javacodegeeks.drools.ProblemAnalyzer;
 import com.javacodegeeks.drools.Questionnaire;
+import com.javacodegeeks.drools.frameworks.Framework;
 import com.javacodegeeks.drools.libraries.Library;
 import com.javacodegeeks.drools.tasks.JsonParserTask;
 import com.javacodegeeks.drools.tasks.Task;
@@ -21,6 +22,7 @@ public class RuleEngineClass {
     private KieContainer kContainer;
     private KieSession kSession;
     private List<Library> jsonParserLibraries;
+    private List<Framework> webFrameworkList;
     private JsonParserTask jsonParserTask;
     private Task task;
     private FactHandle factQuestionInsert;
@@ -32,6 +34,7 @@ public class RuleEngineClass {
         kSession = kContainer.newKieSession("ksession-rules");
         jsonParserLibraries = LibrariesRepository.getInstance().getJsonParserLibraries();
         jsonParserTask = new JsonParserTask();
+        webFrameworkList = LibrariesRepository.getInstance().getWebFrameworks();
         factQuestionInsert = null;
     }
 
@@ -45,6 +48,7 @@ public class RuleEngineClass {
         kSession.setGlobal("questionnaire", questionnaire);
         kSession.setGlobal("task",task);
         kSession.setGlobal("jsonParserLibraries", jsonParserLibraries);
+        kSession.setGlobal("webFrameworkList", webFrameworkList);
     }
 
     public void insertExpressions(){

@@ -59,5 +59,4 @@ public class WebFrameworkRulesTest {
         KieServices ks = KieServices.Factory.get();
         KieContainer kContainer = ks.getKieClasspathContainer();
         kSession = kContainer.newKieSession("ksession-rules");
-    }
-}
+    }}

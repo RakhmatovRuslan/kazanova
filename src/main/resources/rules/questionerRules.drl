@@ -5,6 +5,9 @@ import com.javacodegeeks.drools.enums.Features;
 import com.javacodegeeks.drools.enums.DataType;
 import com.javacodegeeks.drools.tasks.Task;
 import com.javacodegeeks.drools.tasks.JsonParserTask;
+import com.javacodegeeks.drools.tasks.WebFrameworkTask
+import com.javacodegeeks.drools.frameworks.WebFramework
+import com.javacodegeeks.drools.enums.WebApplicationType;
 
 global Questionnaire questionnaire;
 global Task task;
@@ -34,3 +37,29 @@ then
     jsonParserTask.setDataType(DataType.values()[question.getAnswer()]);
     question.setAny(false);
  end
+
+rule "WebFramework, the answer to first question is none"
+when question: Question(questionnaire.getTaskType() == TaskType.WEB_FRAMEWORK && questionnaire.getQuestions().get(0).getDefinition() == definition && Features.values()[question.getAnswer()] == Features.NONE)
+then
+     WebFrameworkTask webFrameworkTask=(WebFrameworkTask) task;
+     webFrameworkTask.setFeaturePriority(Features.values()[question.getAnswer()]);
+     question.setAny(false);
+end
+
+rule "WebFramework, the answer to first question is not none"
+when question: Question(questionnaire.getTaskType() == TaskType.WEB_FRAMEWORK && questionnaire.getQuestions().get(0).getDefinition() == definition && Features.values()[question.getAnswer()] != Features.NONE)
+then
+     WebFrameworkTask webFrameworkTask=(WebFrameworkTask) task;
+     webFrameworkTask.setFeaturePriority(Features.values()[question.getAnswer()]);
+     question.setDefinition(questionnaire.getQuestions().get(1).getDefinition());
+     question.setVariations(questionnaire.getQuestions().get(1).getVariations());
+     question.setAny(true);
+end
+
+rule "WebFramework, the answer to second question is ... "
+when question: Question(questionnaire.getTaskType() == TaskType.WEB_FRAMEWORK && questionnaire.getQuestions().get(1).getDefinition() == definition)
+then
+     WebFrameworkTask webFrameworkTask=(WebFrameworkTask) task;
+     webFrameworkTask.setWebApplicationType(WebApplicationType.values()[question.getAnswer()]);
+     question.setAny(false);
+end
