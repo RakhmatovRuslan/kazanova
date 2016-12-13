@@ -12,6 +12,7 @@ import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,6 +37,8 @@ public class WebFrameworkRulesTest {
 
     @Test
     public void webFrameworkTaskTest(){
+        List<Task> correlatedTasks = new ArrayList<>();
+        kSession.setGlobal("correlatedTasks",correlatedTasks);
         kSession.setGlobal("webFrameworkList", webFrameworkList);
         String problem = "I need a good java web framework";
         Task task = new ProblemAnalyzer().analyzerProblemDefinition(problem);
@@ -51,7 +54,7 @@ public class WebFrameworkRulesTest {
 //        Assert.assertEquals("Vaadin",frameworkTask.getFramework().getName());
         // without feature selection and web application type
         Assert.assertEquals("Grails", webFrameworkTask.getFramework().getName());
-        System.out.println("The appropriate framework is "+webFrameworkTask.getFramework().getName());
+        System.out.println("The most appropriate framework for you is "+webFrameworkTask.getFramework().getName());
         System.out.println("Reason: "+webFrameworkTask.getReason());
 
         // with feature selection and web application type

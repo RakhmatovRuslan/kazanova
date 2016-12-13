@@ -1,8 +1,11 @@
 package com.javacodegeeks.drools.gui;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.Effect;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -26,6 +29,10 @@ public class QuestionnaireVBox extends VBox {
     private Text title;
     private Label info;
     private String inputMessage="Hey developer, what is your problem?";
+    private Button restart;
+    private Button yes;
+    private Button no;
+    private Label correlation;
 
 
 
@@ -34,6 +41,10 @@ public class QuestionnaireVBox extends VBox {
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(8);
         isInserted=false;
+        restart=new Button();
+        yes=new Button();
+        no=new Button();
+        correlation=new Label();
             }
 
     public void initGUI(){
@@ -82,6 +93,7 @@ public class QuestionnaireVBox extends VBox {
         vbox.getChildren().addAll(radioButtons);
         vbox.getChildren().addAll(next);
 
+
     }
 
     public void setResultScene(String result){
@@ -90,8 +102,48 @@ public class QuestionnaireVBox extends VBox {
         question.setText("Result:");
         Label viewResult=new Label();
         viewResult.setText(result);
-        vbox.getChildren().addAll(title,question,viewResult);
 
+        restart.setText("Restart");
+        restart.setTranslateX(320);
+        vbox.getChildren().addAll(title,question,viewResult,restart);
+
+
+    }
+
+    public void setDialog(String sLabel){
+                this.setAlignment(Pos.CENTER);
+                HBox buttons = new HBox();
+                buttons.setAlignment(Pos.CENTER);
+                yes.setText("Yes");
+                no.setText("No");
+                buttons.getChildren().addAll(yes,no);
+                this.getChildren().addAll(new Label("Do you need "+sLabel+" ?"), buttons);
+    }
+
+
+
+    public Button getYes() {
+        return yes;
+    }
+
+    public void setYes(Button yes) {
+        this.yes = yes;
+    }
+
+    public Button getNo() {
+        return no;
+    }
+
+    public void setNo(Button no) {
+        this.no = no;
+    }
+
+    public Button getRestart() {
+        return restart;
+    }
+
+    public void setRestart(Button restart) {
+        this.restart = restart;
     }
 
     public ToggleGroup getGroup() {

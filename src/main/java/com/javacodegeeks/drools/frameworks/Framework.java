@@ -17,6 +17,7 @@ public class Framework {
     protected Double popularity;
 
     public Framework() {
+        name="";
     }
 
     public Framework(String name, Double rapidAppDevelopment, Double complexity, Double easeOfUse, Double documentationAndCom, Double ecosystem, Double scalability, Double code, Double lookAndFeel, Double total) {

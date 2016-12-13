@@ -12,6 +12,7 @@ public class WebFrameworkTask extends Task {
     public WebFrameworkTask() {
         featurePriority = Features.NONE;
         webApplicationType = WebApplicationType.NONE;
+        findCorrelation=true;
     }
 
     public WebApplicationType getWebApplicationType() {

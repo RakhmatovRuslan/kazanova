@@ -10,6 +10,7 @@ public class Library {
     protected Double performanceScale;
 
     public Library() {
+        name="";
     }
 
     public Library(String name, Double size, Double convenienceScale) {

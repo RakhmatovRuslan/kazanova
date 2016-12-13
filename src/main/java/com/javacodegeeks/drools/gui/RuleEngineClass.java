@@ -12,6 +12,7 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.FactHandle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,17 +23,20 @@ public class RuleEngineClass {
     private KieContainer kContainer;
     private KieSession kSession;
     private List<Library> jsonParserLibraries;
+    private List<Task> correlatedTasks;
     private List<Framework> webFrameworkList;
     private JsonParserTask jsonParserTask;
     private Task task;
     private FactHandle factQuestionInsert;
     private Questionnaire questionnaire;
+    private List<Framework> ormFrameworksList;
 
     public  RuleEngineClass(){
         ks = KieServices.Factory.get();
         kContainer = ks.getKieClasspathContainer();
         kSession = kContainer.newKieSession("ksession-rules");
         jsonParserLibraries = LibrariesRepository.getInstance().getJsonParserLibraries();
+        correlatedTasks=new ArrayList<>();
         jsonParserTask = new JsonParserTask();
         webFrameworkList = LibrariesRepository.getInstance().getWebFrameworks();
         factQuestionInsert = null;
@@ -49,10 +53,27 @@ public class RuleEngineClass {
         kSession.setGlobal("task",task);
         kSession.setGlobal("jsonParserLibraries", jsonParserLibraries);
         kSession.setGlobal("webFrameworkList", webFrameworkList);
+        kSession.setGlobal("correlatedTasks",correlatedTasks);
+        kSession.setGlobal("ormFrameworks",ormFrameworksList);
+    }
+
+    public List<Task> getCorrelatedTasks() {
+        return correlatedTasks;
+    }
+
+    public void setCorrelatedTasks(List<Task> correlatedTasks) {
+        this.correlatedTasks = correlatedTasks;
     }
 
     public void insertExpressions(){
         kSession.insert(task);
+
+        correlatedTasks.forEach(t->{
+
+            kSession.insert(t);
+            kSession.fireAllRules();
+
+        });
     }
 
     public Questionnaire getQuestionnaire() {
@@ -117,5 +138,13 @@ public class RuleEngineClass {
 
     public void setTask(Task task) {
         this.task = task;
+    }
+
+    public List<Framework> getWebFrameworkList() {
+        return webFrameworkList;
+    }
+
+    public void setWebFrameworkList(List<Framework> webFrameworkList) {
+        this.webFrameworkList = webFrameworkList;
     }
 }
