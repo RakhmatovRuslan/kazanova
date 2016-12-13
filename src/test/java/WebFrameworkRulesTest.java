@@ -51,8 +51,13 @@ public class WebFrameworkRulesTest {
 //        Assert.assertEquals("Vaadin",frameworkTask.getFramework().getName());
         // without feature selection and web application type
         Assert.assertEquals("Grails", webFrameworkTask.getFramework().getName());
+        System.out.println("The appropriate framework is "+webFrameworkTask.getFramework().getName());
+        System.out.println("Reason: "+webFrameworkTask.getReason());
+
         // with feature selection and web application type
         Assert.assertEquals("JSF",webFrameworkTask2.getFramework().getName());
+        System.out.println("The appropriate framework is "+webFrameworkTask2.getFramework().getName());
+        System.out.println("Reason: "+webFrameworkTask2.getReason());
     }
 
     public void loadRuleEngine(){

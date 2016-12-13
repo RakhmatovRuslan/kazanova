@@ -10,5 +10,14 @@ then
     Framework container = new Framework();
     container.setName("Tomcat");
     serverTask.setFramework(container);
-    serverTask.setReason("The "+container.getName()+" web container (application server main component) is most popular and at the same time ");
+    serverTask.setReason("The "+container.getName()+" is most popular web container (application server`s main component), very light, best performed and with good support");
  end
+
+ rule "Application server task, GlassFish rule" salience 2
+ when serverTask : ApplicationServerTask()
+ then
+    Framework container = new Framework();
+    container.setName("JBoss");
+    serverTask.setFramework(container);
+    serverTask.setReason("The "+container.getName()+" is fully JavaEE application server and has well provided documentation");
+  end
