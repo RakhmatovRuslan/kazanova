@@ -4,6 +4,7 @@ package com.javacodegeeks.drools.gui;/**
 
 import com.javacodegeeks.drools.Question;
 import com.javacodegeeks.drools.Questionnaire;
+import com.javacodegeeks.drools.enums.TaskType;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -103,7 +104,30 @@ public class MainApp extends Application {
             else{
                 ruleEngineClass.insertExpressions();
                 ruleEngineClass.getkSession().fireAllRules();
-                vbox.setResultScene(ruleEngineClass.getTask().getFramework()!=null?ruleEngineClass.getTask().getFramework().getName():ruleEngineClass.getTask().getLibrary().getName());
+                String output="";
+
+                if(ruleEngineClass.getTask().getFramework()!=null){
+
+                   output=ruleEngineClass.getTask().getFramework().getName();
+
+                }
+                else if(ruleEngineClass.getTask().getLibrary()!=null){
+
+                  output=ruleEngineClass.getTask().getLibrary().getName();
+
+                }
+                else {
+
+                    vbox.setResultScene("NOT FOUND ");
+
+                }
+                if(ruleEngineClass.getTask().isFindCorrelation()){
+                    output=output+" "+ruleEngineClass.getCorrelatedTasks().toString();
+
+
+                }
+
+                vbox.setResultScene(output);
             }
             }
         });

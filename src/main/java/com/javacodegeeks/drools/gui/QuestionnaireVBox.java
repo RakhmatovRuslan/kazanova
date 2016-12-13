@@ -32,6 +32,7 @@ public class QuestionnaireVBox extends VBox {
     private Button restart;
     private Button yes;
     private Button no;
+    private Label correlation;
 
 
 
@@ -43,6 +44,7 @@ public class QuestionnaireVBox extends VBox {
         restart=new Button();
         yes=new Button();
         no=new Button();
+        correlation=new Label();
             }
 
     public void initGUI(){
@@ -117,6 +119,8 @@ public class QuestionnaireVBox extends VBox {
                 buttons.getChildren().addAll(yes,no);
                 this.getChildren().addAll(new Label("Do you need "+sLabel+" ?"), buttons);
     }
+
+
 
     public Button getYes() {
         return yes;

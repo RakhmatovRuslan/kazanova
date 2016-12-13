@@ -2,3 +2,4 @@
 0 dataType:What type of data are you processing?:None Small-data Big-data
 1 featurePriority:What is important for your application?:None Rapid-application-development Complexity Ease-of-use Documentation-and-Community Ecosystem Scalability Code Look-and-Feel
 1 webApplicationType:What type of web application do you need?:Request-based Component-based Hybrid Meta Ria-based None
+5 featurePriority:What is important for your application?None Popularity

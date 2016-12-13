@@ -7,7 +7,8 @@ import com.javacodegeeks.drools.tasks.Task;
 import com.javacodegeeks.drools.tasks.JsonParserTask;
 import com.javacodegeeks.drools.tasks.WebFrameworkTask
 import com.javacodegeeks.drools.frameworks.WebFramework
-import com.javacodegeeks.drools.enums.WebApplicationType;
+import com.javacodegeeks.drools.enums.WebApplicationType
+import com.javacodegeeks.drools.tasks.OrmFrameworkTask;
 
 global Questionnaire questionnaire;
 global Task task;
@@ -61,5 +62,13 @@ when question: Question(questionnaire.getTaskType() == TaskType.WEB_FRAMEWORK &&
 then
      WebFrameworkTask webFrameworkTask=(WebFrameworkTask) task;
      webFrameworkTask.setWebApplicationType(WebApplicationType.values()[question.getAnswer()]);
+     question.setAny(false);
+end
+
+rule "ORMframework, the answer to first question is ... "
+when question: Question(questionnaire.getTaskType() == TaskType.ORM_FRAMEWORK && questionnaire.getQuestions().get(0).getDefinition() == definition)
+then
+     OrmFrameworkTask ormFrameworkTask=(OrmFrameworkTask) task;
+     ormFrameworkTask.setFeaturePriority(Features.values()[question.getAnswer()]);
      question.setAny(false);
 end
