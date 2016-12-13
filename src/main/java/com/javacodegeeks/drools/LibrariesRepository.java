@@ -42,7 +42,7 @@ public class LibrariesRepository {
         getOrmFrameworksFromFile();
     }
 
-    public void getOrmFrameworksFromFile() {
+    private void getOrmFrameworksFromFile() {
         File file = new File(LibrariesRepository.class.getClassLoader().getResource("knowledge/"+ormFrameworkFileName).getFile());
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
@@ -132,5 +132,11 @@ public class LibrariesRepository {
         this.jsonParserLibraries = jsonParserLibraries;
     }
 
+    public List<Framework> getOrmFrameworks() {
+        return ormFrameworks;
+    }
 
+    public void setOrmFrameworks(List<Framework> ormFrameworks) {
+        this.ormFrameworks = ormFrameworks;
+    }
 }

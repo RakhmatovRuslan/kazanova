@@ -1,1 +1,24 @@
+import com.javacodegeeks.drools.frameworks.Framework;
+import com.javacodegeeks.drools.tasks.OrmFrameworkTask;
+import com.javacodegeeks.drools.enums.Features;
+import com.javacodegeeks.drools.comparator.FrameworkSorter;
+import java.util.List
+import com.javacodegeeks.drools.frameworks.OrmFramework;
 
+global List<Framework> ormFrameworks;
+
+rule "Orm framework task, evaluation by total rule"
+when ormFrameworkTask : OrmFrameworkTask(featurePriority == Features.NONE)
+then
+    FrameworkSorter.sortByOverallFeatures(ormFrameworks);
+    ormFrameworkTask.setFramework((OrmFramework) ormFrameworks.get(0));
+    ormFrameworkTask.setReason("The "+((OrmFramework)ormFrameworks.get(0)).getName()+" outperforms the others in overall features");
+ end
+
+rule "Orm framework task, evaluation by popularity  rule"
+when ormFrameworkTask : OrmFrameworkTask(featurePriority == Features.POPULARITY)
+then
+    FrameworkSorter.sortByPopularity(ormFrameworks);
+    ormFrameworkTask.setFramework((OrmFramework) ormFrameworks.get(0));
+    ormFrameworkTask.setReason("The "+((OrmFramework)ormFrameworks.get(0)).getName()+"is the most popular among others");
+ end

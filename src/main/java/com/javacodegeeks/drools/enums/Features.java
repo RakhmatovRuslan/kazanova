@@ -14,7 +14,8 @@ public enum Features {
     ECOSYSTEM("Ecosystem"),
     SCALABILITY("Scalability"),
     CODE("Code"),
-    LOOK_FEEL("Look and Feel")
+    LOOK_FEEL("Look and Feel"),
+    POPULARITY("Popularity");
     ;
 
     private String name;

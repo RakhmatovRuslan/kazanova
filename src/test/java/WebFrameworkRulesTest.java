@@ -37,7 +37,7 @@ public class WebFrameworkRulesTest {
     @Test
     public void webFrameworkTaskTest(){
         kSession.setGlobal("webFrameworkList", webFrameworkList);
-        String problem = "I need a good web-framework";
+        String problem = "I need a good java web framework";
         Task task = new ProblemAnalyzer().analyzerProblemDefinition(problem);
         WebFrameworkTask frameworkTask = (WebFrameworkTask) task;
         frameworkTask.setFeaturePriority(Features.COMPLEXITY);
