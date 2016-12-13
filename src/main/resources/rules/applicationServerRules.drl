@@ -1,4 +1,4 @@
 
 rule "Application server task rule"
-when taskjioji : ApplicationServerTask()
+when task1 : ApplicationServerTask()
 then  end

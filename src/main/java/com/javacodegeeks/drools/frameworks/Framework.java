@@ -4,16 +4,17 @@ package com.javacodegeeks.drools.frameworks;
  * Created by Ruslan on 12/3/2016.
  */
 public class Framework {
-    private String name;
-    private Double rapidAppDevelopment;
-    private Double complexity;
-    private Double easeOfUse;
-    private Double documentationAndCom;
-    private Double ecosystem;
-    private Double scalability;
-    private Double code;
-    private Double lookAndFeel;
-    private Double total;
+    protected String name;
+    protected Double rapidAppDevelopment;
+    protected Double complexity;
+    protected Double easeOfUse;
+    protected Double documentationAndCom;
+    protected Double ecosystem;
+    protected Double scalability;
+    protected Double code;
+    protected Double lookAndFeel;
+    protected Double total;
+    protected Double popularity;
 
     public Framework() {
     }
@@ -111,6 +112,14 @@ public class Framework {
         this.total = total;
     }
 
+    public Double getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(Double popularity) {
+        this.popularity = popularity;
+    }
+
     @Override
     public String toString() {
         return "Framework{" +
@@ -124,6 +133,7 @@ public class Framework {
                 ", code=" + code +
                 ", lookAndFeel=" + lookAndFeel +
                 ", total=" + total +
+                ", popularity=" + popularity +
                 '}';
     }
 }

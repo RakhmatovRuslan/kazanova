@@ -15,8 +15,7 @@ when jsonParser : JsonParserTask( featurePriority == Features.NONE)
 then
     LibrarySorter.sortByPerformanceDesc(jsonParserLibraries);
     jsonParser.setLibrary((Library)jsonParserLibraries.get(0));
-    update(jsonParser);
-    System.out.println("Library for the jsonParser is - "+ jsonParser.getLibrary());
+    jsonParser.setReason("");
 end
 
 rule "Json parser library is choosen by size rule"
@@ -25,7 +24,6 @@ when jsonParser : JsonParserTask( featurePriority == Features.SIZE)
 then
     LibrarySorter.sortBySizeDesc(jsonParserLibraries);
     jsonParser.setLibrary((Library) jsonParserLibraries.get(0));
-    update(jsonParser);
     System.out.println("Library for the jsonParser is - "+ jsonParser.getLibrary());
 end
 
@@ -36,7 +34,6 @@ when jsonParser : JsonParserTask( featurePriority == Features.PERFORMANCE && dat
 then
     LibrarySorter.sortByJsonBigDataPerDesc(jsonParserLibraries);
     jsonParser.setLibrary((Library)jsonParserLibraries.get(0));
-    update(jsonParser);
     System.out.println("Library for the jsonParser is - "+ jsonParser.getLibrary());
 end
 
@@ -46,6 +43,5 @@ when jsonParser : JsonParserTask( featurePriority == Features.PERFORMANCE && dat
 then
     LibrarySorter.sortByJsonSmallDataPerDesc(jsonParserLibraries);
     jsonParser.setLibrary((Library)jsonParserLibraries.get(0));
-    update(jsonParser);
     System.out.println("Library for the jsonParser is - "+ jsonParser.getLibrary());
 end

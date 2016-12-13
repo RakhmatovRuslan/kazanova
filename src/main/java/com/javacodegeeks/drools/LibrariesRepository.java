@@ -2,6 +2,7 @@ package com.javacodegeeks.drools;
 
 import com.javacodegeeks.drools.enums.WebApplicationType;
 import com.javacodegeeks.drools.frameworks.Framework;
+import com.javacodegeeks.drools.frameworks.OrmFramework;
 import com.javacodegeeks.drools.frameworks.WebFramework;
 import com.javacodegeeks.drools.libraries.JsonParserLibrary;
 import com.javacodegeeks.drools.libraries.Library;
@@ -11,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -22,9 +24,11 @@ public class LibrariesRepository {
 
     final static String jsonParserLibFileName = "jsonlib.txt";
     final static String webFrameworkFileName = "webFramework.txt";
+    final static String ormFrameworkFileName = "orm-framework.txt";
 
     private List<Library> jsonParserLibraries;
     private List<Framework> webFrameworks;
+    private List<Framework> ormFrameworks;
 
     private static LibrariesRepository ourInstance = new LibrariesRepository();
 
@@ -35,6 +39,28 @@ public class LibrariesRepository {
     private LibrariesRepository() {
         getJsonParserFromFile();
         getWebFrameworksFromFile();
+        getOrmFrameworksFromFile();
+    }
+
+    public void getOrmFrameworksFromFile() {
+        File file = new File(LibrariesRepository.class.getClassLoader().getResource("knowledge/"+ormFrameworkFileName).getFile());
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            List<String> lines = bufferedReader.lines().collect(Collectors.toList());
+            lines.remove(0);
+            ormFrameworks = new ArrayList<>();
+            lines.forEach(line->{
+                String [] words = line.split(" ");
+                ormFrameworks.addAll(Arrays.asList(
+                   new OrmFramework(words[0],Double.valueOf(words[1]))
+                ));
+            });
+            System.out.println("============================================================");
+            ormFrameworks.forEach(orm-> System.out.println(orm));
+            System.out.println("============================================================");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void getJsonParserFromFile() {

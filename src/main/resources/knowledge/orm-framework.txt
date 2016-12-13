@@ -1,0 +1,7 @@
+Frameworks popularity
+Hibernate 67.5
+Plain-old-JDBC 22
+Spring-Jdbc-Template 19.5
+Eclipse-Link 13
+MyBatis 6.5
+JOOQ 1.5
