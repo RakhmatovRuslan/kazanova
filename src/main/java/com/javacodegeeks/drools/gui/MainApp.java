@@ -121,10 +121,14 @@ public class MainApp extends Application {
                    output="NOT FOUND ";
 
                 }
+
+                output+="\n"+"Reasoning: "+ruleEngineClass.getTask().getReason();
                 if(ruleEngineClass.getTask().isFindCorrelation()){
-                    output=output+" "+ruleEngineClass.getCorrelatedTasks().toString();
-
-
+                    output+="\n\n"+"Here is a stack of CORRELATED frameworks that you may need:";
+                    output=output+"\n"+"ORM: "+ruleEngineClass.getCorrelatedTasks().get(0).getFramework().getName();
+                    output+="\n"+"Reasoning:"+ruleEngineClass.getCorrelatedTasks().get(0).getReason();
+                    output+="\n\n"+"Application Server: "+ ruleEngineClass.getCorrelatedTasks().get(1).getFramework().getName();
+                    output+="\n"+"Reasoning:"+ruleEngineClass.getCorrelatedTasks().get(1).getReason();
                 }
 
                 vbox.setResultScene(output);
