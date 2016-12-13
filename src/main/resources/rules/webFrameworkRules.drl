@@ -24,7 +24,7 @@ when webFrameworkTask: WebFrameworkTask(featurePriority == Features.RAPID_APPLIC
 then
       FrameworkSorter.sortByRapidAppDevFeature(webFrameworkList);
       webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName());
 end
 
 rule "Complexity feature rule" salience 1
@@ -33,7 +33,7 @@ when webFrameworkTask: WebFrameworkTask(featurePriority == Features.COMPLEXITY &
 then
     FrameworkSorter.sortByComplexityFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName());
  end
 
 rule "Ease of use feature rule" salience 1
@@ -42,7 +42,7 @@ when webFrameworkTask: WebFrameworkTask(featurePriority == Features.EASE_OF_USE 
 then
     FrameworkSorter.sortByEaseOfUseFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName());
  end
 
 rule "Documentation and community feature rule" salience 1
@@ -51,7 +51,7 @@ when webFrameworkTask: WebFrameworkTask(featurePriority == Features.DOCUMENTATIO
 then
     FrameworkSorter.sortByDocAndCommunityFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName());
 end
 
 rule "Ecosystem feature rule" salience 1
@@ -60,7 +60,7 @@ when webFrameworkTask: WebFrameworkTask(featurePriority == Features.ECOSYSTEM &&
 then
     FrameworkSorter.sortByEcosystemFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName());
 end
 
 rule "Scalability feature rule" salience 1
@@ -69,7 +69,7 @@ when webFrameworkTask: WebFrameworkTask(featurePriority == Features.SCALABILITY 
 then
     FrameworkSorter.sortByScalabilityFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName());
 end
 
 rule "Code feature rule" salience 1
@@ -78,7 +78,7 @@ when webFrameworkTask: WebFrameworkTask(featurePriority == Features.CODE && webA
 then
     FrameworkSorter.sortByCodeFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName());
 end
 
 rule "Look and Feel feature rule" salience 1
@@ -87,7 +87,7 @@ when webFrameworkTask: WebFrameworkTask(featurePriority == Features.LOOK_FEEL &&
 then
     FrameworkSorter.sortByLookAndFeelFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName());
 end
 
 //=================================================================================================
@@ -99,7 +99,7 @@ then
       List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
       FrameworkSorter.sortByRapidAppDevFeature(webFrameWorks);
       webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName()+" and "+webFrameworkTask.getWebApplicationType().getName());
 end
 
 rule "Complexity feature by web application type rule" salience 1
@@ -109,7 +109,7 @@ then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByComplexityFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName()+" and "+webFrameworkTask.getWebApplicationType().getName());
  end
 
 rule "Ease of use feature by web application type rule" salience 1
@@ -119,7 +119,7 @@ then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByEaseOfUseFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName()+" and "+webFrameworkTask.getWebApplicationType().getName());
  end
 
 rule "Documentation and community feature by web application type rule" salience 1
@@ -129,7 +129,7 @@ then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByDocAndCommunityFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName()+" and "+webFrameworkTask.getWebApplicationType().getName());
 end
 
 rule "Ecosystem feature by web application type rule" salience 1
@@ -139,7 +139,7 @@ then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByEcosystemFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName()+" and "+webFrameworkTask.getWebApplicationType().getName());
 end
 
 rule "Scalability feature by web application type rule" salience 1
@@ -149,7 +149,7 @@ then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByScalabilityFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName()+" and "+webFrameworkTask.getWebApplicationType().getName());
 end
 
 rule "Code feature by web application type rule" salience 1
@@ -159,7 +159,7 @@ then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByCodeFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName()+" and "+webFrameworkTask.getWebApplicationType().getName());
 end
 
 rule "Look and Feel feature by web application type rule" salience 1
@@ -169,5 +169,5 @@ then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByLookAndFeelFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().getName()+" and "+webFrameworkTask.getWebApplicationType().getName());
 end

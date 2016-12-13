@@ -15,7 +15,7 @@ when jsonParser : JsonParserTask( featurePriority == Features.NONE)
 then
     LibrarySorter.sortByPerformanceDesc(jsonParserLibraries);
     jsonParser.setLibrary((Library)jsonParserLibraries.get(0));
-    jsonParser.setReason("The "+jsonParser.getLibrary().getName()+" ");
+    jsonParser.setReason("The "+jsonParser.getLibrary().getName()+" outperforms the others by overall features");
 end
 
 rule "Json parser library is choosen by size rule" salience 1
@@ -24,7 +24,7 @@ when jsonParser : JsonParserTask( featurePriority == Features.SIZE)
 then
     LibrarySorter.sortBySizeDesc(jsonParserLibraries);
     jsonParser.setLibrary((Library) jsonParserLibraries.get(0));
-    jsonParser.setReason("");
+    jsonParser.setReason("The "+jsonParser.getLibrary().getName()+" has the smallest size among the other json parsers");
 end
 
 
@@ -34,7 +34,7 @@ when jsonParser : JsonParserTask( featurePriority == Features.PERFORMANCE && dat
 then
     LibrarySorter.sortByJsonBigDataPerDesc(jsonParserLibraries);
     jsonParser.setLibrary((Library)jsonParserLibraries.get(0));
-    jsonParser.setReason("");
+    jsonParser.setReason("The "+jsonParser.getLibrary().getName()+ " is the best for big data processing");
 end
 
 rule "Json parser library is choosen by small data processing performance rule" salience 1
@@ -43,5 +43,5 @@ when jsonParser : JsonParserTask( featurePriority == Features.PERFORMANCE && dat
 then
     LibrarySorter.sortByJsonSmallDataPerDesc(jsonParserLibraries);
     jsonParser.setLibrary((Library)jsonParserLibraries.get(0));
-    jsonParser.setReason("");
+    jsonParser.setReason("The "+jsonParser.getLibrary().getName()+ " is the best for small data processing");
 end
