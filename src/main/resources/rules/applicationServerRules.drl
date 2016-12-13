@@ -1,4 +1,14 @@
+// Rules are created based on knowledge acquired from the link below
+//https://plumbr.eu/uncategorized/most-popular-java-ee-servers-2016-edition
+import com.javacodegeeks.drools.tasks.ApplicationServerTask
+import com.javacodegeeks.drools.frameworks.Framework;
 
-rule "Application server task rule"
-when task1 : ApplicationServerTask()
-then  end
+
+rule "Application server task, Tomcat rule" salience 1
+when serverTask : ApplicationServerTask()
+then
+    Framework container = new Framework();
+    container.setName("Tomcat");
+    serverTask.setFramework(container);
+    serverTask.setReason("The "+container.getName()+" web container (application server main component) is most popular and at the same time ");
+ end
