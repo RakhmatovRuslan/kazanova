@@ -40,6 +40,7 @@ public class RuleEngineClass {
         jsonParserTask = new JsonParserTask();
         webFrameworkList = LibrariesRepository.getInstance().getWebFrameworks();
         factQuestionInsert = null;
+        ormFrameworksList = LibrariesRepository.getInstance().getOrmFrameworks();
     }
 
     public Task defineProblem(String problemDefinition){
@@ -67,13 +68,9 @@ public class RuleEngineClass {
 
     public void insertExpressions(){
         kSession.insert(task);
+        kSession.fireAllRules();
 
-        correlatedTasks.forEach(t->{
-
-            kSession.insert(t);
-            kSession.fireAllRules();
-
-        });
+        correlatedTasks.forEach(t-> kSession.insert(t));
     }
 
     public Questionnaire getQuestionnaire() {
