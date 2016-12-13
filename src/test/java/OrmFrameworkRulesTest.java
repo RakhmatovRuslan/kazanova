@@ -1,4 +1,5 @@
 import com.javacodegeeks.drools.LibrariesRepository;
+import com.javacodegeeks.drools.ProblemAnalyzer;
 import com.javacodegeeks.drools.enums.Features;
 import com.javacodegeeks.drools.frameworks.Framework;
 import com.javacodegeeks.drools.frameworks.OrmFramework;
@@ -20,17 +21,20 @@ public class OrmFrameworkRulesTest {
     List<Framework> ormFrameworks;
     OrmFramework ormFramework;
     OrmFrameworkTask ormFrameworkTask;
+    String problem = null;
     @Before
     public void init(){
         loadRuleEngine();
         ormFrameworks = LibrariesRepository.getInstance().getOrmFrameworks();
-        ormFrameworkTask = new OrmFrameworkTask();
-        ormFrameworkTask.setFeaturePriority(Features.POPULARITY);
+        problem = "orm framework java";
     }
 
     @Test
     public void test(){
         kSession.setGlobal("ormFrameworks",ormFrameworks);
+        ProblemAnalyzer problemAnalyzer = new ProblemAnalyzer();
+        ormFrameworkTask = (OrmFrameworkTask) problemAnalyzer.analyzerProblemDefinition(problem);
+        ormFrameworkTask.setFeaturePriority(Features.POPULARITY);
         kSession.insert(ormFrameworkTask);
         kSession.fireAllRules();
         Assert.assertEquals("Hibernate",ormFrameworkTask.getFramework().getName());

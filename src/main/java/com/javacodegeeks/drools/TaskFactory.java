@@ -1,9 +1,7 @@
 package com.javacodegeeks.drools;
 
 import com.javacodegeeks.drools.enums.TaskType;
-import com.javacodegeeks.drools.tasks.JsonParserTask;
-import com.javacodegeeks.drools.tasks.Task;
-import com.javacodegeeks.drools.tasks.WebFrameworkTask;
+import com.javacodegeeks.drools.tasks.*;
 
 /**
  * Created by Ruslan on 12/1/2016.
@@ -22,15 +20,20 @@ public class TaskFactory {
         if(taskType == null){
             return null;
         }
+        Task task = null;
         if(taskType == TaskType.JSON_PARSER){
-            Task task = new JsonParserTask();
-            task.setTaskType(taskType);
-            return task;
+            task = new JsonParserTask();
         }else if (taskType == TaskType.WEB_FRAMEWORK){
-            Task task = new WebFrameworkTask();
-            task.setTaskType(taskType);
-            return task;
-        }
-        return null;
+            task = new WebFrameworkTask();
+       }else if(taskType == TaskType.ORM_FRAMEWORK){
+            task = new OrmFrameworkTask();
+       }else if(taskType == TaskType.GUI_FRAMEWORK){
+            task = new GuiFrameworkTask();
+       }else if(taskType == TaskType.APPLICATION_SERVER){
+            task = new ApplicationServerTask();
+       }
+        task.setTaskType(taskType);
+        return task;
+
     }
 }

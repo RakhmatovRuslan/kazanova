@@ -8,7 +8,7 @@
 import com.javacodegeeks.drools.tasks.WebFrameworkTask
 import com.javacodegeeks.drools.tasks.Task;
 import java.util.List
-import com.javacodegeeks.drools.tasks.DataAccessTask
+import com.javacodegeeks.drools.tasks.OrmFrameworkTask
 import com.javacodegeeks.drools.tasks.ApplicationServerTask
 import java.util.ArrayList
 
@@ -17,6 +17,6 @@ global List<Task> correlatedTasks;
 rule "Web-framework correlation rules"
 when webFrameworkTask : WebFrameworkTask(findCorrelation == true)
 then
- correlatedTasks.add(new DataAccessTask());
+ correlatedTasks.add(new OrmFrameworkTask());
  correlatedTasks.add(new ApplicationServerTask());
 end

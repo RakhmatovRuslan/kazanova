@@ -60,6 +60,8 @@ public class Test {
                 kSession.fireAllRules();
             }
         }
+
+
 //        task = (Task) kSession.getGlobal("task");
         // insert expression into working memory
         kSession.setGlobal("jsonParserLibraries", jsonParserLibraries);

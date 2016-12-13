@@ -1,0 +1,29 @@
+import com.javacodegeeks.drools.tasks.GuiFrameworkTask
+import com.javacodegeeks.drools.frameworks.Framework;
+
+rule "Java gui framework, Javafx rule" salience 1
+when guiFrameworkTask : GuiFrameworkTask()
+then
+    Framework guiFramework = new Framework();
+    guiFramework.setName("JavaFx");
+    guiFrameworkTask.setFramework(guiFramework);
+    guiFrameworkTask.setReason("The "+guiFramework.getName()+" framework is the best in terms of performance, ease-of-use and documentation");
+ end
+
+rule "Java gui framework, Swing rule" salience 2
+when guiFrameworkTask : GuiFrameworkTask()
+then
+    Framework guiFramework = new Framework();
+    guiFramework.setName("Swing");
+    guiFrameworkTask.setFramework(guiFramework);
+    guiFrameworkTask.setReason("The "+guiFramework.getName()+" framework has rich components");
+ end
+
+rule "Java gui framework, SWT rule" salience 3
+when guiFrameworkTask : GuiFrameworkTask()
+then
+    Framework guiFramework = new Framework();
+    guiFramework.setName("SWT");
+    guiFrameworkTask.setFramework(guiFramework);
+    guiFrameworkTask.setReason("The "+guiFramework.getName()+" framework uses some native bindings and the rant on the internet");
+ end
