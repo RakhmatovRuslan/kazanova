@@ -9,39 +9,39 @@ import com.javacodegeeks.drools.enums.DataType;
 
 global java.util.List<Library> jsonParserLibraries;
 
-rule "Json parser library is choosen by total_points rule"
+rule "Json parser library is choosen by total_points rule" salience 1
 no-loop
 when jsonParser : JsonParserTask( featurePriority == Features.NONE)
 then
     LibrarySorter.sortByPerformanceDesc(jsonParserLibraries);
     jsonParser.setLibrary((Library)jsonParserLibraries.get(0));
-    jsonParser.setReason("");
+    jsonParser.setReason("The "+jsonParser.getLibrary().getName()+" ");
 end
 
-rule "Json parser library is choosen by size rule"
+rule "Json parser library is choosen by size rule" salience 1
 no-loop
 when jsonParser : JsonParserTask( featurePriority == Features.SIZE)
 then
     LibrarySorter.sortBySizeDesc(jsonParserLibraries);
     jsonParser.setLibrary((Library) jsonParserLibraries.get(0));
-    System.out.println("Library for the jsonParser is - "+ jsonParser.getLibrary());
+    jsonParser.setReason("");
 end
 
 
-rule "Json parser library is choosen by big data processing performance rule"
+rule "Json parser library is choosen by big data processing performance rule" salience 1
 no-loop
 when jsonParser : JsonParserTask( featurePriority == Features.PERFORMANCE && dataType == DataType.BIG_DATA)
 then
     LibrarySorter.sortByJsonBigDataPerDesc(jsonParserLibraries);
     jsonParser.setLibrary((Library)jsonParserLibraries.get(0));
-    System.out.println("Library for the jsonParser is - "+ jsonParser.getLibrary());
+    jsonParser.setReason("");
 end
 
-rule "Json parser library is choosen by small data processing performance rule"
+rule "Json parser library is choosen by small data processing performance rule" salience 1
 no-loop
 when jsonParser : JsonParserTask( featurePriority == Features.PERFORMANCE && dataType == DataType.SMALL_DATA)
 then
     LibrarySorter.sortByJsonSmallDataPerDesc(jsonParserLibraries);
     jsonParser.setLibrary((Library)jsonParserLibraries.get(0));
-    System.out.println("Library for the jsonParser is - "+ jsonParser.getLibrary());
+    jsonParser.setReason("");
 end

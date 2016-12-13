@@ -52,7 +52,7 @@ public class LibrariesRepository {
             lines.forEach(line->{
                 String [] words = line.split(" ");
                 ormFrameworks.addAll(Arrays.asList(
-                   new OrmFramework(words[0],Double.valueOf(words[1]))
+                   new OrmFramework(words[0],Double.valueOf(words[1]),Double.valueOf(words[2]))
                 ));
             });
             System.out.println("============================================================");

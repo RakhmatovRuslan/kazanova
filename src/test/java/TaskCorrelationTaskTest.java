@@ -20,6 +20,7 @@ public class TaskCorrelationTaskTest {
     KieSession kSession;
     WebFrameworkTask webFrameworkTask;
     List<Framework> webFrameworkList;
+    List<Framework> ormFrameworkList;
 
     @Before
     public void init(){
@@ -27,14 +28,20 @@ public class TaskCorrelationTaskTest {
         webFrameworkTask = new WebFrameworkTask();
         webFrameworkTask.setFindCorrelation(true);
         webFrameworkList = LibrariesRepository.getInstance().getWebFrameworks();
+        ormFrameworkList = LibrariesRepository.getInstance().getOrmFrameworks();
     }
 
     @Test
     public void test(){
         kSession.setGlobal("webFrameworkList", webFrameworkList);
+        kSession.setGlobal("ormFrameworks", ormFrameworkList);
         List<Task> correlatedTasks = new ArrayList<>();
         kSession.setGlobal("correlatedTasks",correlatedTasks);
         kSession.insert(webFrameworkTask);
+        kSession.fireAllRules();
+        correlatedTasks.forEach(task -> {
+            kSession.insert(task);
+        });
         kSession.fireAllRules();
         System.out.println(correlatedTasks);
     }

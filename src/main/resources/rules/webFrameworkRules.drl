@@ -9,165 +9,165 @@ import com.javacodegeeks.drools.frameworks.WebFramework;
 
 global List<Framework> webFrameworkList;
 
-rule "Overall features rule"
+rule "Overall features rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.NONE)
 then
       FrameworkSorter.sortByOverallFeatures(webFrameworkList);
       webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-      System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of overall features");
 end
 
-rule "Rapid application development feature rule"
+rule "Rapid application development feature rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.RAPID_APPLICATION_DEVELOPMENT && webApplicationType == WebApplicationType.NONE)
 then
       FrameworkSorter.sortByRapidAppDevFeature(webFrameworkList);
       webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-      System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
 end
 
-rule "Complexity feature rule"
+rule "Complexity feature rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.COMPLEXITY && webApplicationType == WebApplicationType.NONE)
 then
     FrameworkSorter.sortByComplexityFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
  end
 
-rule "Ease of use feature rule"
+rule "Ease of use feature rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.EASE_OF_USE && webApplicationType == WebApplicationType.NONE)
 then
     FrameworkSorter.sortByEaseOfUseFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
  end
 
-rule "Documentation and community feature rule"
+rule "Documentation and community feature rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.DOCUMENTATION_COMMUNITY && webApplicationType == WebApplicationType.NONE)
 then
     FrameworkSorter.sortByDocAndCommunityFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
 end
 
-rule "Ecosystem feature rule"
+rule "Ecosystem feature rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.ECOSYSTEM && webApplicationType == WebApplicationType.NONE)
 then
     FrameworkSorter.sortByEcosystemFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
 end
 
-rule "Scalability feature rule"
+rule "Scalability feature rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.SCALABILITY && webApplicationType == WebApplicationType.NONE)
 then
     FrameworkSorter.sortByScalabilityFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
 end
 
-rule "Code feature rule"
+rule "Code feature rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.CODE && webApplicationType == WebApplicationType.NONE)
 then
     FrameworkSorter.sortByCodeFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
 end
 
-rule "Look and Feel feature rule"
+rule "Look and Feel feature rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.LOOK_FEEL && webApplicationType == WebApplicationType.NONE)
 then
     FrameworkSorter.sortByLookAndFeelFeature(webFrameworkList);
     webFrameworkTask.setFramework((WebFramework) webFrameworkList.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name());
 end
 
 //=================================================================================================
 
-rule "Rapid application development feature by web application type rule"
+rule "Rapid application development feature by web application type rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.RAPID_APPLICATION_DEVELOPMENT && webApplicationType != WebApplicationType.NONE)
 then
       List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
       FrameworkSorter.sortByRapidAppDevFeature(webFrameWorks);
       webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-      System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
 end
 
-rule "Complexity feature by web application type rule"
+rule "Complexity feature by web application type rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.COMPLEXITY && webApplicationType != WebApplicationType.NONE)
 then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByComplexityFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
  end
 
-rule "Ease of use feature by web application type rule"
+rule "Ease of use feature by web application type rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.EASE_OF_USE && webApplicationType != WebApplicationType.NONE)
 then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByEaseOfUseFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
  end
 
-rule "Documentation and community feature by web application type rule"
+rule "Documentation and community feature by web application type rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.DOCUMENTATION_COMMUNITY && webApplicationType != WebApplicationType.NONE)
 then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByDocAndCommunityFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
 end
 
-rule "Ecosystem feature by web application type rule"
+rule "Ecosystem feature by web application type rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.ECOSYSTEM && webApplicationType != WebApplicationType.NONE)
 then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByEcosystemFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
 end
 
-rule "Scalability feature by web application type rule"
+rule "Scalability feature by web application type rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.SCALABILITY && webApplicationType != WebApplicationType.NONE)
 then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByScalabilityFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
 end
 
-rule "Code feature by web application type rule"
+rule "Code feature by web application type rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.CODE && webApplicationType != WebApplicationType.NONE)
 then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByCodeFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
 end
 
-rule "Look and Feel feature by web application type rule"
+rule "Look and Feel feature by web application type rule" salience 1
 no-loop
 when webFrameworkTask: WebFrameworkTask(featurePriority == Features.LOOK_FEEL && webApplicationType != WebApplicationType.NONE)
 then
     List<Framework> webFrameWorks =  FrameworkSorter.getWebFrameworksByType(webFrameworkList,webFrameworkTask.getWebApplicationType());
     FrameworkSorter.sortByLookAndFeelFeature(webFrameWorks);
     webFrameworkTask.setFramework((WebFramework) webFrameWorks.get(0));
-    System.out.println("The appropriate web framework is "+webFrameworkTask.getFramework());
+      webFrameworkTask.setReason("The "+webFrameworkTask.getFramework().getName()+" is the best in terms of "+webFrameworkTask.getFeaturePriority().name()+" and "+webFrameworkTask.getWebApplicationType().name());
 end
