@@ -33,8 +33,6 @@ public class RuleEngineClass {
         jsonParserLibraries = LibrariesRepository.getInstance().getJsonParserLibraries();
         jsonParserTask = new JsonParserTask();
         factQuestionInsert = null;
-
-
     }
 
     public Task defineProblem(String problemDefinition){
@@ -44,18 +42,13 @@ public class RuleEngineClass {
     }
 
     public void setGlobals(){
-
-
         kSession.setGlobal("questionnaire", questionnaire);
         kSession.setGlobal("task",task);
         kSession.setGlobal("jsonParserLibraries", jsonParserLibraries);
-
     }
 
     public void insertExpressions(){
-
         kSession.insert(task);
-
     }
 
     public Questionnaire getQuestionnaire() {

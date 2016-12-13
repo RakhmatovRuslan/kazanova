@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:java-technologies="http://www.somewhere.com/java-technologies#">
+	
+	<owl:Ontology rdf:about="http://www.somewhere.com/java-technologies">
+		<dc:title>The www.oracle.com is the company that supports java technologies</dc:title>
+		<dc:description>An ontology written for the decision support system named "Kazanova"</dc:description>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="http://www.somewhere.com/java-technologies#application-server">
+		<rdfs:label>Java Application Server</rdfs:label>
+		<rdfs:comment>The class of all java application servers</rdfs:comment>
+	</owl:Class>
+	
+	<!-- <owl:DatatypeProperty rdf:about="java-technologies#web-container" /> -->
+	
+	<!-- <rdf:Description rdf:about="java-technologies#servlet-container"> -->
+		<!-- <rdf:type rdf:resource="java-technologies#application-server"/> -->
+		<!-- <java-technologies:web-container>Apache Tomcat</java-technologies:web-container> -->
+	<!-- </rdf:Description> -->
+	
+	
+	<owl:Class rdf:about="http://www.somewhere.com/java-technologies#framework">
+		<rdfs:label>Java Framework</rdfs:label>
+		<rdfs:comment>The class of all java frameworks</rdfs:comment>
+	</owl:Class>
+	
+	<!-- <owl:Class rdf:about="framework#persistence-framework"> -->
+		<!-- <rdfs:subClassOf rdf:resource="framework"/> -->
+		<!-- <rdfs:label>Java Persistence Framework<rdfs:label> -->
+		<!-- <rdfs:comment>The subclass of framework and the class of all java persistence frameworks</rdfs:comment> -->
+	<!-- </owl:Class> -->
+	
+	<owl:ObjectProperty rdf:about="http://www.somewhere.com/java-technologies#requires"/>
+	
+	<rdf:Description rdf:about="http://www.somewhere.com/java-technologies#web-framework">
+		
+		<rdf:type rdf:resource="http://www.somewhere.com/java-technologies#framework" />
+		
+		<java-technologies:requires rdf:resource="http://www.somewhere.com/java-technologies#appllication-server"/>
+		
+	</rdf:Description>
+	
+
+	
+	
+	
+	<!-- <owl:Class rdf:about="java-technologies#framework#web-framework"> -->
+		<!-- <rdfs:subClassOf rdf:resource="framework"/> -->
+		<!-- <rdfs:label>Java Web Framework<rdfs:label> -->
+		<!-- <rdfs:comment>The subclass of framework,also called java web frameworks</rdfs:comment> -->
+	<!-- </owl:Class> -->
+	
+
+	
+	
+	<!-- <owl:Class rdf:about="library"> -->
+		<!-- <rdfs:label>Java Library</rdfs:label> -->
+		<!-- <rdfs:comment>The class of all java libraries</rdfs:comment> -->
+	<!-- </owl:Class> -->
+	
+	<!-- <owl:Class rdf:about="library#json-parser-library"> -->
+		<!-- <rdfs:subClassOf rdf:resource="library"/> -->
+		<!-- <rdfs:label>Json Parser Library<rdfs:label> -->
+		<!-- <rdfs:comment>The subclass of library and the class of all json parser libraries</rdfs:comment> -->
+	<!-- </owl:Class> -->
+</rdf:RDF>
