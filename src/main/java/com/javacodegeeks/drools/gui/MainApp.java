@@ -118,7 +118,7 @@ public class MainApp extends Application {
                 }
                 else {
 
-                    vbox.setResultScene("NOT FOUND ");
+                   output="NOT FOUND ";
 
                 }
                 if(ruleEngineClass.getTask().isFindCorrelation()){
