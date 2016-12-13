@@ -2,6 +2,7 @@ package com.javacodegeeks.drools;
 
 import com.javacodegeeks.drools.enums.TaskType;
 import com.javacodegeeks.drools.tasks.JsonParserTask;
+import com.javacodegeeks.drools.tasks.OrmFrameworkTask;
 import com.javacodegeeks.drools.tasks.Task;
 import com.javacodegeeks.drools.tasks.WebFrameworkTask;
 
@@ -28,6 +29,10 @@ public class TaskFactory {
             return task;
         }else if (taskType == TaskType.WEB_FRAMEWORK){
             Task task = new WebFrameworkTask();
+            task.setTaskType(taskType);
+            return task;
+        }else if(taskType == TaskType.ORM_FRAMEWORK){
+            Task task = new OrmFrameworkTask();
             task.setTaskType(taskType);
             return task;
         }

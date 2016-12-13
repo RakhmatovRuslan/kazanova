@@ -16,12 +16,14 @@ public class ProblemAnalyzer {
             = new EditDistance(true);
     static final String [] jsonLibDictionary = {"json", "java"};
     static final String [] webFrameWorkDictionary = {"java", "web"};
+    static final String [] ormFrameworkDictionary = {"java", "orm"};
     private Map<TaskType,String []> classifiers = null;
 
     public ProblemAnalyzer() {
         classifiers = new HashMap<>();
         classifiers.put(TaskType.JSON_PARSER, jsonLibDictionary);
         classifiers.put(TaskType.WEB_FRAMEWORK, webFrameWorkDictionary);
+        classifiers.put(TaskType.ORM_FRAMEWORK, ormFrameworkDictionary);
     }
 
     public  Task analyzerProblemDefinition(String problemDefinition){

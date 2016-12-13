@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.mvel2.util.Make;
 
 public class MainApp extends Application {
@@ -22,7 +23,6 @@ public class MainApp extends Application {
     private RuleEngineClass ruleEngineClass;
     private Questionnaire questionnaire;
     private Question question;
-    private String inputMessage="Hey developer, what is your problem?";
     private boolean first;
     private boolean isInserted;
 
@@ -40,14 +40,15 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
 
         mainStage = primaryStage;
+      //  primaryStage.initStyle(StageStyle.UTILITY);
 
         BorderPane root = new BorderPane();
-        Scene scene = new Scene(root, 650, 500, Color.WHITE);
+        Scene scene = new Scene(root, 400, 400, Color.WHITE);
 
         QuestionnaireVBox vbox=new QuestionnaireVBox();
         vbox.addVBox();
         root.setCenter(vbox.getVbox());
-        vbox.initGUI(inputMessage);
+        vbox.initGUI();
 
 
         vbox.getNext().setOnAction(event -> {
@@ -85,8 +86,6 @@ public class MainApp extends Application {
                 vbox.setResultScene(ruleEngineClass.getTask().toString());
             }
             }
-
-
         });
 
         primaryStage.setTitle("Kazanova DSS");
